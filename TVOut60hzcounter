@@ -1,0 +1,45 @@
+//You need TVOut lib to run this.
+
+#include <TVout.h>
+#include <fontALL.h>
+TVout TV;
+
+int Counter = 0;
+int seconds = 0;
+int negtot = 0;
+
+void setup ( )
+{
+  TV.begin(NTSC,128,96);
+  TV.select_font(font8x8); 
+}
+void loop ( )
+{
+ if (Counter == 0)
+{    
+    TV.println ( "Lets count 60  times per      second" );
+    //TV.println (Counter);
+    delay( 8000 );
+    TV.clear_screen ( );
+    Counter++;
+}
+ else if (Counter > 0)
+{
+    TV.println (Counter);
+    seconds = Counter / 60;
+    TV.println (seconds);
+    Counter++;
+    delay( 16.6 );
+    TV.clear_screen ( );
+}
+ else if (Counter < -1)
+{
+    TV.println (negtot);
+    seconds = Counter / 60 * -1;
+    negtot = Counter * -1;
+    TV.println (seconds);
+    Counter++;
+    delay( 16.6 );
+    TV.clear_screen ( );
+}
+}
