@@ -33,6 +33,7 @@ void loop ( )
     TV.clear_screen ( );
 }
  else if (Counter < -1)
+ //Can only go up to 32,767, remove neg sign when flipping to -32,767
 {
     TV.println (negtot);
     seconds = Counter / 60 * -1;
